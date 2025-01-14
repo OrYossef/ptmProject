@@ -1,12 +1,8 @@
-package graph;
+package test;
 
 import java.util.Random;
 
-import configs.Agent;
-import configs.Message;
-import configs.Topic;
-import configs.TopicManagerSingleton;
-import configs.TopicManagerSingleton.TopicManager;
+import test.TopicManagerSingleton.TopicManager;
 
 public class MainTrain { // simple tests to get you going...
 
@@ -31,7 +27,7 @@ public class MainTrain { // simple tests to get you going...
 
     }    
 
-    public static  abstract class AAgent implements Agent {
+    public static  abstract class AAgent implements Agent{
         public void reset() {}
         public void close() {}
         public String getName(){
@@ -43,7 +39,7 @@ public class MainTrain { // simple tests to get you going...
 
         double sum=0;
         int count=0;
-        TopicManager tm= TopicManagerSingleton.get();
+        TopicManager tm=TopicManagerSingleton.get();
 
         public TestAgent1(){
             tm.getTopic("Numbers").subscribe(this);

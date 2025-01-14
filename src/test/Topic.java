@@ -1,4 +1,4 @@
-package graph;
+package test;
 
 
 import java.util.ArrayList;
@@ -9,14 +9,18 @@ public class Topic {
     public List<Agent> subs;
     public List<Agent> pubs;
 
+
     Topic(String name){
         this.name=name;
         this.subs=new ArrayList<>();
         this.pubs=new ArrayList<>();
     }
 
+
     public void subscribe(Agent a){
+        if(!subs.contains(a))
         subs.add(a);
+
     }
 
     public void unsubscribe(Agent a){
@@ -41,6 +45,13 @@ public class Topic {
         int index=findIndex(pubs,a);
         if (index!=-1)
             pubs.remove(index);
+    }
+
+    public List<Agent> getSubs(){
+        return subs;
+    }
+    public List<Agent> getPubs(){
+        return pubs;
     }
 
     public <T> int findIndex(List<T> list, T element) {
