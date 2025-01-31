@@ -1,37 +1,38 @@
-package test;
-
+package configs;
 
 import java.util.function.BinaryOperator;
 
-public class PlusAgent implements Agent{
+import graph.Agent;
+import graph.Message;
+import graph.TopicManagerSingleton.TopicManager;
+
+public class BinOpAgent implements Agent {
 
     double x,y;
-    String name, topicA,topicB,result;
-    TopicManagerSingleton.TopicManager tm;
+    String name,topicA,topicB,result;
+    TopicManager tm;
     BinaryOperator<Double> op;
-
-    public PlusAgent(String[] subs,String[] pubs){
-        tm = TopicManagerSingleton.get();
-        name = "PlusAgent";
-        topicA = subs[0];
-        topicB = subs[1];
-        result = pubs[0];
-        op = (a,b)->a+b;
-
+    public BinOpAgent(String name,String topicA, String topicB,String result, BinaryOperator<Double> op){
+        tm=TopicManagerSingleton.get();
         tm.getTopic(topicA).subscribe(this);
         tm.getTopic(topicB).subscribe(this);
         tm.getTopic(result).addPublisher(this);
+        this.topicA=topicA;
+        this.topicB=topicB;
+        this.result=result;
+        this.name=name;
+        this.op=op;
     }
 
     @Override
     public String getName() {
-        return "PlusAgent";
+        return name;
     }
 
     @Override
     public void reset() {
-        x = 0;
-        y = 0;
+        x=0;
+        y=0;
     }
 
     @Override
@@ -46,7 +47,16 @@ public class PlusAgent implements Agent{
             tm.getTopic(result).publish(new Message(""+op.apply(x, y)));
     }
 
+
     @Override
     public void close() {
     }
+
 }
+
+
+
+
+
+
+

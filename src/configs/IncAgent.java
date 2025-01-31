@@ -1,4 +1,7 @@
-package test;
+package configs;
+
+import graph.Agent;
+import graph.Message;
 
 public class IncAgent implements Agent {
 

@@ -1,12 +1,14 @@
-package test;
+package configs;
 
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import graph.Agent;
+import graph.Topic;
 import test.TopicManagerSingleton.TopicManager;
 
-public class Graph extends ArrayList<Node>{
+public class Graph extends ArrayList<configs.Node>{
 
     public boolean hasCycles() {
         for (Node node : this) {

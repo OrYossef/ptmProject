@@ -1,4 +1,6 @@
-package test;
+package graph;
+
+import graph.Topic;
 
 import java.util.*;
 
@@ -10,7 +12,7 @@ public class TopicManagerSingleton {
 
     public static class TopicManager{
         private static  final TopicManager instance=new TopicManager();
-        public Map<String,Topic > topicMap;
+        public Map<String, Topic> topicMap;
 
         private TopicManager(){
             topicMap= new HashMap<>();

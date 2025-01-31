@@ -1,4 +1,6 @@
-package test;
+package configs;
+
+import graph.Agent;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -9,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class GenericConfig implements Config {
+public class GenericConfig implements configs.Config {
 
     private String fileName;
 
